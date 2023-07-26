@@ -504,7 +504,18 @@
             ]
           }
         ],
-        "policies": [],
+        "policies": [
+          {
+            "name": "Policy A",
+            "description": "Test Policy for testing purpose",
+            "type": "user",
+            "logic": "POSITIVE",
+            "decisionStrategy": "UNANIMOUS",
+            "config": {
+              "users": "[\"moped.user\"]"
+            }
+          }
+        ],
         "scopes": [
           {
             "name": "urn:servlet-authz:protected:admin:access"
