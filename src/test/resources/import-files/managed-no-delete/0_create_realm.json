@@ -507,12 +507,12 @@
         "policies": [
           {
             "name": "Policy A",
-            "description": "Test Policy for testing purpose",
-            "type": "user",
+            "description": "",
+            "type": "client",
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "users": "[\"moped.user\"]"
+              "clients": "[\"moped-client\"]"
             }
           }
         ],

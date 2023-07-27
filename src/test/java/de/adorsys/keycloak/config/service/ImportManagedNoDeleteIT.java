@@ -167,12 +167,14 @@ class ImportManagedNoDeleteIT extends AbstractImportIT {
             .size();
         assertThat(createdScopesCount, is(4));
 
-        int createdPoliciesCount = createdRealm
+        long createdPoliciesCount = createdRealm
             .getClients()
             .stream().filter(client -> Objects.equals(client.getName(), "moped-client")).findAny()
             .orElseThrow(() -> new RuntimeException("Cannot find client 'moped-client'"))
-            .getAuthorizationSettings().getPolicies()
-            .size();
-        assertThat(createdPoliciesCount, is(1));
+            .getAuthorizationSettings().getPolicies().stream()
+            .filter(policy -> !policy.getName().equals("Default Policy"))
+            .filter(policy -> !policy.getName().equals("Default Permission"))
+            .count();
+        assertThat(createdPoliciesCount, is(1L));
     }
 }
